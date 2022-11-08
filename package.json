@@ -1,0 +1,33 @@
+{
+    "name": "turbo-pancake",
+    "version": "0.0.1",
+    "description": "",
+    "scripts": {
+        "preinstall": "npx only-allow pnpm",
+        "postinstall": "simple-git-hooks",
+        "build": "pnpm --filter '*' build"
+    },
+    "lint-staged": {
+        "**/*.{js,jsx,tsx,ts,less,md,json}": [
+            "prettier --write"
+        ]
+    },
+    "simple-git-hooks": {
+        "pre-commit": "pnpm exec lint-staged --concurrent false",
+        "commit-msg": "pnpm exec tsx scripts/verifyCommit.ts $1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:mzvast/turbo-pancake.git"
+    },
+    "author": "mzvast",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^18.11.8",
+        "lint-staged": "^13.0.3",
+        "picocolors": "^1.0.0",
+        "prettier": "^2.7.1",
+        "simple-git-hooks": "^2.8.1",
+        "tsx": "^3.11.0"
+    }
+}
