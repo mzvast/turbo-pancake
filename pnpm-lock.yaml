@@ -18,7 +18,7 @@ importers:
       simple-git-hooks: 2.8.1
       tsx: 3.11.0
 
-  apps/gk-demo:
+  apps/gk-base:
     specifiers:
       '@types/three': ^0.144.0
       '@vitest/coverage-c8': ^0.25.0
@@ -54,14 +54,6 @@ importers:
       typescript: 4.8.4
       vite: 3.2.3
       vitest: 0.24.5_happy-dom@7.6.6
-
-  libs/core:
-    specifiers:
-      typescript: ^4.6.4
-      vite: ^3.2.3
-    devDependencies:
-      typescript: 4.8.4
-      vite: 3.2.3
 
 packages:
 
@@ -172,13 +164,13 @@ packages:
   /@types/concat-stream/1.6.1:
     resolution: {integrity: sha512-eHE4cQPoj6ngxBZMvVf6Hw7Mh4jMW4U9lpGmS5GBPB9RYxlFg+CHaVN7ErNY4W9XfLIEn20b4VDYaIrbq0q4uA==}
     dependencies:
-      '@types/node': 8.10.66
+      '@types/node': 18.11.9
     dev: true
 
   /@types/form-data/0.0.33:
     resolution: {integrity: sha512-8BSvG1kGm83cyJITQMZSulnl6QV8jqAGreJsc5tPu1Jq0vTSOiY/k24Wx82JRpWwZSqrala6sd5rWi6aNXvqcw==}
     dependencies:
-      '@types/node': 8.10.66
+      '@types/node': 18.11.9
     dev: true
 
   /@types/istanbul-lib-coverage/2.0.4:
