@@ -59,6 +59,14 @@ describe('StateMachine', () => {
         expect(FSM.currentState).undefined;
     });
 
+    it('should has stateMachine on state', () => {
+        const [s1, s2] = [new S1(), new S2()];
+        const FSM = new StateMachine([s1, s2]);
+
+        expect(s1.stateMachine).toBe(FSM);
+        expect(s2.stateMachine).toBe(FSM);
+    });
+
     it('should enter/exit state work', () => {
         const [s1, s2] = [new S1(), new S2()];
         const FSM = new StateMachine([s1, s2]);

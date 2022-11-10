@@ -11,8 +11,11 @@ export interface IStateMachine {
 
 export class StateMachine implements IStateMachine {
     states: State[];
-    constructor(states) {
+    constructor(states: State[]) {
         this.states = states;
+        for (let x of states) {
+            x.stateMachine = this;
+        }
     }
     currentState: State;
     canEnterState(stateClass: AnyClass): boolean {
