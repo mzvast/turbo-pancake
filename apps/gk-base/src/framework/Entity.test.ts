@@ -35,7 +35,7 @@ describe('Entity', () => {
     it('add component should work', () => {
         entity.addComponent(c1);
         expect(c1.entity).toEqual(entity);
-        expect(entity.components[c1.constructor.name]).toEqual(c1);
+        expect(entity.component(TestComp)).toEqual(c1);
         expect(FnComponentDidAddToEntity).toHaveBeenCalledOnce();
     });
 
@@ -45,7 +45,7 @@ describe('Entity', () => {
     });
 
     it('remove component should work', () => {
-        entity.removeComponent(c1);
+        entity.removeComponent(TestComp);
         expect(entity.components[c1.constructor.name]).toBeUndefined();
         expect(FnComponentWillRemoveFromEntity).toHaveBeenCalledOnce();
     });
