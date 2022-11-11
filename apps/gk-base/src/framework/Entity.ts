@@ -1,4 +1,5 @@
 import type {ComponentType, IComponent} from './Component';
+import {ofType} from './types';
 
 export interface IEntity {
     components: IComponent[];
@@ -8,11 +9,11 @@ export interface IEntity {
 }
 export class Entity implements IEntity {
     public components: IComponent[] = [];
-    public update = (dt: number) => {
+    public update(dt: number) {
         for (const x of this.components) {
-            x?.update(dt);
+            x?.update?.(dt);
         }
-    };
+    }
     public addComponent = (c: IComponent) => {
         if (this.components.includes(c)) {
             // console.warn('Component already added');
@@ -38,7 +39,7 @@ export class Entity implements IEntity {
         return toRemove;
     };
 
-    public component = (componentClass: ComponentType) => {
-        return this.components.find(x => x instanceof componentClass);
+    public component = <T>(componentClass: ofType<T>) => {
+        return this.components.find(x => x instanceof componentClass) as T;
     };
 }
