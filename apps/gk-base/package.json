@@ -6,7 +6,7 @@
         "dist"
     ],
     "scripts": {
-        "test:watch": "vitest --coverage",
+        "test:watch": "vitest",
         "test": "npm run coverage",
         "coverage": "vitest run --coverage",
         "dev": "vite",
