@@ -34,7 +34,7 @@ class World {
         scene.add(ambientLight, mainLight /*train*/);
 
         // train is in ECS world
-        const trainEntity = new Train();
+        const trainEntity = new Train({camera, scene});
         this.entityManager.add(trainEntity);
 
         const resizer = new Resizer(container, camera, renderer);
