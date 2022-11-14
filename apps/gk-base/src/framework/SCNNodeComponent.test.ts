@@ -21,13 +21,13 @@ describe('SCNNodeComponent', () => {
         const agent = new Agent3D();
         agent.delegate = scnNodeComponent;
         agent._behaviorFn = (_agent: Agent3D) => {
-            _agent.position[0] = 1;
-            _agent.position[1] = 1;
-            _agent.position[2] = 1;
+            _agent.position.x = 1;
+            _agent.position.y = 1;
+            _agent.position.z = 1;
             //
-            _agent.rotation[0] = 1;
-            _agent.rotation[1] = 1;
-            _agent.rotation[2] = 1;
+            _agent.rotation.x = 1;
+            _agent.rotation.y = 1;
+            _agent.rotation.z = 1;
         };
         // before
         expect(scnNode.position.x).toBe(0);

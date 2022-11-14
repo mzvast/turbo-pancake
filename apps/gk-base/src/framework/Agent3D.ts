@@ -1,10 +1,10 @@
-import {Matrix3, Vector3} from 'three';
+import {Euler, Matrix3, Matrix4, Quaternion, Vector3, Vector4} from 'three';
 import {Agent} from './Agent';
 
 export interface IAgent3D {
     position: Vector3; // vector3 The current position of the agent in 3D space.
     velocity: Vector3; // vector3 The current velocity of the agent in 3D space.
-    rotation: Matrix3; // 3x3 matrix The orientation of the agent in 3D space.
+    rotation: Euler; // The orientation of the agent in 3D space.
     rightHanded: boolean; // 是否右手坐标系
     update(deltaTime: number); // Causes the agent to evaluate its goals and update its position, rotation, and velocity accordingly.
 }
@@ -15,7 +15,7 @@ export class Agent3D extends Agent implements IAgent3D {
     rightHanded: boolean = true;
     position = new Vector3();
     velocity = new Vector3();
-    rotation = new Matrix3();
+    rotation = new Euler();
     override updateWithDeltaTime(deltaTime: number) {
         if (!this.behavior) return;
 

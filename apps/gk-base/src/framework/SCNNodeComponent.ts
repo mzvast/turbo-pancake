@@ -20,16 +20,11 @@ export class SCNNodeComponent
         this.node = node;
     }
     agentWillUpdate(agent: Agent3D) {
-        agent.position = this.node.position.toArray();
-        agent.rotation = this.node.rotation.toArray();
+        agent.position.copy(this.node.position);
+        agent.rotation.copy(this.node.rotation);
     }
     agentDidUpdate(agent: Agent3D) {
-        this.node.position.setX(agent.position[0]);
-        this.node.position.setY(agent.position[1]);
-        this.node.position.setZ(agent.position[2]);
-
-        this.node.rotation.x = agent.rotation[0];
-        this.node.rotation.y = agent.rotation[1];
-        this.node.rotation.z = agent.rotation[2];
+        this.node.position.copy(agent.position);
+        this.node.rotation.copy(agent.rotation);
     }
 }
