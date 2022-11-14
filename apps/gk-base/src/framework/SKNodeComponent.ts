@@ -18,11 +18,11 @@ export class SKNodeComponent
         this.node = node;
     }
     agentWillUpdate(agent: Agent2D) {
-        agent.position = this.node.position.toArray();
+        agent.position.copy(this.node.position);
         agent.rotation = this.node.rotation;
     }
     agentDidUpdate(agent: Agent2D) {
-        this.node.position.fromArray(agent.position);
+        this.node.position.copy(agent.position);
         this.node.rotation = agent.rotation;
     }
 }

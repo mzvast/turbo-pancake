@@ -27,8 +27,8 @@ describe('SKNodeComponent', () => {
         const agent = new Agent2D();
         agent.delegate = skNodeComponent;
         agent._behaviorFn = (_agent: Agent2D) => {
-            _agent.position[0] = 1;
-            _agent.position[1] = 1;
+            _agent.position.x = 1;
+            _agent.position.y = 1;
             _agent.rotation = 1;
         };
         // before
