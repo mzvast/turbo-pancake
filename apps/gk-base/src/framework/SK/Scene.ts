@@ -1,5 +1,5 @@
-import {Entity} from './Entity';
-import {SceneRootNodeType} from './types';
+import {Entity} from '../Entity';
+import {SceneRootNodeType} from '../types';
 // https://sourcegraph.com/github.com/xybp888/iOS-SDKs/-/blob/iPhoneOS16.1.sdk/System/Library/Frameworks/GameplayKit.framework/Headers/GKScene.h
 export interface IScene {
     // init with file and attach node
