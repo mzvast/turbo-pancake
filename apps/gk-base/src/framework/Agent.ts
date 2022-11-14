@@ -1,3 +1,4 @@
+import {Vector3} from 'three';
 import {IAgentDelegate} from './AgentDelegate';
 import {Behavior} from './Behavior';
 import {Component} from './Component';
@@ -9,7 +10,6 @@ export interface IAgent {
     radius: number; // The agent’s radius.
     delegate: IAgentDelegate; // An object that prepares for or responds to updates in the agent simulation.
 }
-
 export abstract class Agent extends Component implements IAgent {
     behavior: Behavior;
     _behaviorFn: (agent) => void;
@@ -18,17 +18,10 @@ export abstract class Agent extends Component implements IAgent {
     radius: number;
     delegate: IAgentDelegate;
     update(deltaTime: number) {
-        this.updateWithDeltaTime(deltaTime);
-    }
-    updateWithDeltaTime(deltaTime: number) {
         this.delegate?.agentWillUpdate?.(this);
-        // do simulation based on goals
         this?._behaviorFn?.(this); // TODO: this is a hack to get the behavior to work
-        // for (let goal of this.behavior._goals) {
-        //     // todo: 根据goal的type，执行对应的仿真
-        // }
-        // combine ans by weights
-
+        this.updateWithDeltaTime(deltaTime);
         this.delegate?.agentDidUpdate?.(this);
     }
+    updateWithDeltaTime(deltaTime) {}
 }
