@@ -1,7 +1,7 @@
-import {Agent2D} from './Agent2D';
-import {IAgentDelegate} from './AgentDelegate';
-import {Component} from './Component';
-import {Node2D} from './types';
+import {Agent2D} from '../Agent2D';
+import {IAgentDelegate} from '../AgentDelegate';
+import {Component} from '../Component';
+import {Node2D} from '../types';
 
 export interface ISKNodeComponent {
     node: Node2D;

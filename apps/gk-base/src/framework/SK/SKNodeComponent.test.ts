@@ -1,7 +1,7 @@
 import {Object3D, Vector2} from 'three';
 import {describe, it, expect, vi} from 'vitest';
-import {Agent2D} from './Agent2D';
-import {Entity} from './Entity';
+import {Agent2D} from '../Agent2D';
+import {Entity} from '../Entity';
 import {SKNodeComponent} from './SKNodeComponent';
 describe('SKNodeComponent', () => {
     it('should add a SKNodeComponent to an entity', () => {

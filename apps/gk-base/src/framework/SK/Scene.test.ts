@@ -1,5 +1,5 @@
 import {describe, it, expect, vi} from 'vitest';
-import {Entity} from './Entity';
+import {Entity} from '../Entity';
 import {Scene} from './Scene';
 
 describe('Scene', () => {
