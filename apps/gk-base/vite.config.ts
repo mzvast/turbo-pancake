@@ -8,10 +8,4 @@ export default defineConfig({
             '@': path.resolve(__dirname, './src'),
         },
     },
-    build: {
-        minify: 'terser', // esbuild has bug in keep_fnames
-        terserOptions: {
-            keep_fnames: true,
-        },
-    },
 });

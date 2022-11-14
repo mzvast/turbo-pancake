@@ -17,7 +17,6 @@ let renderer;
 let scene: THREE.Scene;
 let loop;
 
-let gkScene: GK.Scene;
 class World {
     entityManager;
     constructor(container) {
