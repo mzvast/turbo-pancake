@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import * as GK from '@/framework';
 import {Agent3D} from '@/framework';
 import {TrainComponent} from '../components/TrainComponent';
+import {RoundedBoxGeometry} from 'three-stdlib';
 
 const pointer = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();
@@ -14,9 +15,16 @@ export class Train extends GK.Entity {
         this.camera = camera;
         this.scene = scene;
 
-        const trainComp = new TrainComponent();
-        this.addComponent(trainComp);
-        const scnNodeComponent = new GK.SCNNodeComponent(trainComp._train);
+        const cap = new THREE.Mesh(
+            new RoundedBoxGeometry(1.0, 2.0, 1.0, 10, 0.5),
+            new THREE.MeshStandardMaterial(),
+        );
+
+        cap.geometry.translate(0, -0.5, 0);
+
+        // const trainComp = new TrainComponent();
+        // this.addComponent(trainComp);
+        const scnNodeComponent = new GK.SCNNodeComponent(cap);
         this.addComponent(scnNodeComponent);
 
         // 跟踪代理
