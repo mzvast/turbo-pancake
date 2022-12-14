@@ -29,7 +29,7 @@ export class Train extends GK.Entity {
 
         // 跟踪代理
         this.targetAgent = new Agent3D(); // not visible
-        this.targetAgent.position.set(2, 0, 0);
+        this.targetAgent.position.set(0, 0, 0);
 
         const toSeekGoal = GK.Goal.toSeekAgent(this.targetAgent);
         // 玩家代理
@@ -53,8 +53,12 @@ export class Train extends GK.Entity {
         raycaster.setFromCamera(pointer, this.camera);
         const intersects = raycaster.intersectObjects(this.scene.children);
         if (intersects.length) {
-            console.log(intersects[0].point);
-            this.targetAgent.position.copy(intersects[0].point);
+            for (const p of intersects) {
+                console.log(p.object.name);
+                if (p.object.name === 'ground') {
+                    this.targetAgent.position.copy(p.point);
+                }
+            }
         }
     };
 }

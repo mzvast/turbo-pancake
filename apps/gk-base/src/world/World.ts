@@ -11,6 +11,7 @@ import * as GK from '@/framework';
 import {TrainComponent} from './components/TrainComponent';
 import {Train} from './entities/Train';
 import {EntityManager} from './entities/EntityManager';
+import {Ground} from './entities/Ground';
 
 let camera;
 let renderer;
@@ -18,7 +19,7 @@ let scene: THREE.Scene;
 let loop;
 
 class World {
-    entityManager;
+    entityManager: EntityManager;
     constructor(container) {
         camera = createCamera();
         renderer = createRenderer();
@@ -36,6 +37,9 @@ class World {
         // train is in ECS world
         const trainEntity = new Train({camera, scene});
         this.entityManager.add(trainEntity);
+
+        const GroundEntity = new Ground({scene});
+        this.entityManager.add(GroundEntity);
 
         const resizer = new Resizer(container, camera, renderer);
 
