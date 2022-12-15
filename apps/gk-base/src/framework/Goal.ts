@@ -30,6 +30,7 @@ export class Goal {
     //  _obstacles: Obstacle[];
     _speed: number = 0;
     _time: number = 0;
+    _deceleration: number = 3; // 开始减速的距离
     constructor() {}
 
     static toSeekAgent(agent: AgentKind) {
@@ -39,8 +40,9 @@ export class Goal {
         return ans;
     }
 
-    static toArriveAgent(agent: AgentKind) {
+    static toArriveAgent(agent: AgentKind, deceleration = 3) {
         const ans = new Goal();
+        ans._deceleration = deceleration;
         ans._type = EGoalType.toArriveAgent;
         ans._agents.push(agent);
         return ans;
