@@ -1,5 +1,6 @@
 import {Euler, Matrix3, Matrix4, Quaternion, Vector3, Vector4} from 'three';
 import {Agent} from './Agent';
+import {calculate3DBehavior} from './behaviors';
 
 export interface IAgent3D {
     position: Vector3; // vector3 The current position of the agent in 3D space.
@@ -11,7 +12,6 @@ export interface IAgent3D {
 const totalForce = new Vector3(); // 合外力
 const curForce = new Vector3(); // 受力分量
 export class Agent3D extends Agent implements IAgent3D {
-    _isAgent3D = true;
     rightHanded: boolean = true;
     position = new Vector3();
     velocity = new Vector3();
@@ -25,7 +25,8 @@ export class Agent3D extends Agent implements IAgent3D {
             const goal = this.behavior._goals[i];
             const weight = this.behavior._weight[i];
             curForce.set(0, 0, 0);
-            goal?._calculate3D?.(this, curForce, deltaTime); // 计算因goal产生的受力
+            calculate3DBehavior(goal, this, curForce, deltaTime); // 计算因goal产生的受力
+
             totalForce.addScaledVector(curForce, weight);
             // todo: mass的影响
             // todo: velocity,rotation 合并

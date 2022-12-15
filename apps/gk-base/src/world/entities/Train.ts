@@ -31,7 +31,7 @@ export class Train extends GK.Entity {
         this.targetAgent = new Agent3D(); // not visible
         this.targetAgent.position.set(0, 0, 0);
 
-        const toSeekGoal = GK.Goal.toSeekAgent(this.targetAgent);
+        const toSeekGoal = GK.Goal.toArriveAgent(this.targetAgent);
         // 玩家代理
         const myAgent = new Agent3D();
         myAgent.maxSpeed = 1;

@@ -1,5 +1,6 @@
 import {Vector2} from 'three';
 import {Agent} from './Agent';
+import {calculate2DBehavior} from './behaviors';
 
 export interface IAgent2D {
     position: Vector2; // vector2 The current position of the agent in 2D space.
@@ -10,7 +11,6 @@ export interface IAgent2D {
 const totalForce = new Vector2(); // 合外力
 const curForce = new Vector2(); // 受力分量
 export class Agent2D extends Agent implements IAgent2D {
-    _isAgent2D = true;
     position = new Vector2();
     velocity = new Vector2();
     rotation = 0;
@@ -23,7 +23,7 @@ export class Agent2D extends Agent implements IAgent2D {
             const goal = this.behavior._goals[i];
             const weight = this.behavior._weight[i];
             curForce.set(0, 0);
-            goal?._calculate2D?.(this, curForce, deltaTime); // 计算因goal产生的受力
+            calculate2DBehavior(goal, this, curForce, deltaTime); // 计算因goal产生的受力
             totalForce.addScaledVector(curForce, weight);
             // todo: mass的影响
             // todo: velocity,rotation 合并
