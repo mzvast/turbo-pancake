@@ -2,10 +2,21 @@
     "name": "turbo-pancake",
     "version": "0.0.1",
     "description": "",
+    "workspaces": [
+        "examples/*",
+        "packages/*"
+    ],
     "scripts": {
-        "preinstall": "npx only-allow pnpm",
         "postinstall": "simple-git-hooks",
-        "build": "pnpm --filter '*' build"
+        "preinstall": "npx only-allow yarn",
+        "@package": "yarn workspaces foreach -pv --include '@package/*'",
+        "@example": "yarn workspaces foreach -pv --include '@example/*'",
+        "build": "yarn build:packages && yarn build:examples",
+        "docs": "yarn docs:packages && yarn docs:examples",
+        "docs:packages": "yarn @package run docs",
+        "docs:examples": "yarn @example run docs",
+        "build:packages": "yarn @package -t run build",
+        "build:examples": "yarn @example run build"
     },
     "lint-staged": {
         "**/*.{js,jsx,tsx,ts,less,md,json}": [
@@ -13,8 +24,8 @@
         ]
     },
     "simple-git-hooks": {
-        "pre-commit": "pnpm exec lint-staged --concurrent false",
-        "commit-msg": "pnpm exec tsx scripts/verifyCommit.ts $1"
+        "pre-commit": "yarn exec lint-staged --concurrent false",
+        "commit-msg": "yarn exec tsx scripts/verifyCommit.ts $1"
     },
     "repository": {
         "type": "git",
@@ -29,5 +40,6 @@
         "prettier": "^2.7.1",
         "simple-git-hooks": "^2.8.1",
         "tsx": "^3.11.0"
-    }
+    },
+    "packageManager": "yarn@3.5.0"
 }

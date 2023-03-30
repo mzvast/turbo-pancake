@@ -105,3 +105,12 @@ dist
 
 # vscode
 .vscode
+
+# .yarn
+.yarn/cache
+.yarn/*.gz
+
+# temp
+temp
+output
+.DS_Store

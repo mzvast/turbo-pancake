@@ -1,0 +1,7 @@
+{
+    // Comments are supported, like tsconfig.json
+    "entryPoints": ["src/types/*.ts", "src/"],
+    "exclude": ["**/*.test.ts"],
+    "out": "dist/docs",
+    "theme": "default"
+}
